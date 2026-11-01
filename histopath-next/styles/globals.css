@@ -1,0 +1,28 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:#f4f6fb; color:#1a2233; font-size:14px; }
+.container { max-width:1180px; margin:28px auto; padding:0 20px; }
+.card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 2px 10px rgba(0,0,0,.06); margin-bottom:22px; border:1px solid #e0e7f0; }
+.card-title { font-size:1rem; font-weight:600; color:#0f2d52; margin-bottom:16px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:28px; }
+.stat-card { background:#fff; border-radius:14px; padding:20px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,.06); border-top:4px solid #0f2d52; }
+.stat-card .number { font-size:2rem; font-weight:700; color:#0f2d52; }
+.stat-card .label { color:#6b7a99; font-size:.78rem; margin-top:4px; }
+table { width:100%; border-collapse:collapse; }
+th { background:#0f2d52; color:#fff; padding:10px 14px; text-align:left; font-size:.78rem; }
+td { padding:10px 14px; border-bottom:1px solid #e0e7f0; font-size:.83rem; }
+tr:hover td { background:#f0f5ff; }
+.btn { display:inline-block; padding:7px 16px; border-radius:8px; text-decoration:none; font-size:.8rem; font-weight:600; cursor:pointer; border:none; }
+.btn-primary { background:#0f2d52; color:#fff; }
+.btn-accent  { background:#2196f3; color:#fff; }
+input,select,textarea { padding:8px 12px; border:1.5px solid #e0e7f0; border-radius:8px; font-size:.85rem; font-family:inherit; width:100%; }
+input:focus,select:focus,textarea:focus { outline:none; border-color:#2196f3; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-group label { font-size:.8rem; font-weight:600; color:#6b7a99; }
+.result-banner { padding:12px 18px; border-radius:10px; margin-bottom:16px; font-weight:600; }
+.result-banner.success { background:#e8f5e9; border-left:4px solid #2e7d32; color:#2e7d32; }
+.result-banner.error   { background:#fde8e8; border-left:4px solid #c62828; color:#c62828; }
+.pos { color:#c62828; font-weight:700; }
+.neg { color:#2e7d32; font-weight:700; }
+.page-header { display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+.page-header h1 { font-size:1.5rem; font-weight:700; color:#0f2d52; }
