@@ -3,7 +3,7 @@
 ## 1. ER diagram
 ![ER diagram](ER_diagram.png)
 
-Cardinalities: Patient 1—N Case · Case 1—1 Specimen · Case 1—1 Report · Report 1—N IHC_Results ·
+Cardinalities: Patient 1—N Case · Case 1—N Specimen · Case 1—1 Report · Report 1—N IHC_Results ·
 Report 1—N Morphological_Features · Report 1—N Report_Addenda · Case 1—N Case_Audit_Logs ·
 User 1—N Reports (pathologist) · User 1—N Addenda (author) · User 1—N Audit logs · User 1—N User (reports_to).
 

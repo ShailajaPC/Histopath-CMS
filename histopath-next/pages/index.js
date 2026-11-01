@@ -12,6 +12,12 @@ export default function Dashboard() {
   }, []);
 
   if (!data) return <><Navbar/><div className="container">Loading...</div></>;
+  if (data.error || !data.organ_counts) return (
+    <><Navbar/><div className="container"><div className="result-banner error">
+      ❌ Dashboard could not load: {data.error || 'unexpected response'}<br/>
+      <small>Run <code>python scripts/setup_db.py</code> (it must finish without FAILED) and refresh.</small>
+    </div></div></>
+  );
 
   return (
     <>

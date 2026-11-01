@@ -43,8 +43,8 @@ def at(n,side,dy=0):
 a=at("Patients","b"); b=at("Cases","t"); line([a,b],"1",(a[0]+.25,a[1]-.4),"N",(b[0]+.25,b[1]+.15))
 # Cases 1 - N Audit
 a=at("Cases","b"); b=at("Case_Audit_Logs","t"); line([a,b],"1",(a[0]+.25,a[1]-.4),"N",(b[0]+.25,b[1]+.15))
-# Cases 1 - 1 Specimens
-a=at("Cases","r",1.0); b=at("Specimens","l"); line([a,(a[0]+0.9,a[1]),(a[0]+0.9,b[1]),b],"1",(a[0]+.3,a[1]+.1),"1",(b[0]-.3,b[1]+.1))
+# Cases 1 - N Specimens
+a=at("Cases","r",1.0); b=at("Specimens","l"); line([a,(a[0]+0.9,a[1]),(a[0]+0.9,b[1]),b],"1",(a[0]+.3,a[1]+.1),"N",(b[0]-.3,b[1]+.1))
 # Cases 1 - 1 Reports
 a=at("Cases","r",-0.3); b=at("Reports","l",0.6); line([a,b],"1",(a[0]+.3,a[1]+.1),"1",(b[0]-.3,b[1]+.1))
 # Reports 1 - N IHC

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -8,6 +8,8 @@ export default function Register() {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => { setIsAdmin(localStorage.getItem('hp_role') === 'ADMIN'); }, []);
   const set = (k,v) => setForm(f=>({...f,[k]:v}));
 
   const handleRegister = async (e) => {
@@ -20,7 +22,7 @@ export default function Register() {
     try {
       const res = await fetch('/api/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(localStorage.getItem('hp_token') ? { Authorization: `Bearer ${localStorage.getItem('hp_token')}` } : {}) },
         body: JSON.stringify({ name: form.name, email: form.email, password: form.password, role: form.role }),
       });
       const data = await res.json();
@@ -75,6 +77,7 @@ export default function Register() {
             <select value={form.role} onChange={e=>set('role',e.target.value)} style={inputStyle}>
               <option value="PATHOLOGIST">Pathologist</option>
               <option value="TECHNICIAN">Lab Technician</option>
+              {isAdmin && <option value="ADMIN">Administrator</option>}
             </select>
           </div>
           <button type="submit" disabled={loading} style={{

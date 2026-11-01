@@ -99,6 +99,9 @@ END $$;
 
 GRANT USAGE ON SCHEMA public TO histo_pathologist, histo_technician, histo_admin;
 
+-- (tables created with SERIAL ids need sequence rights for INSERT)
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO histo_pathologist, histo_technician, histo_admin;
+
 -- everyone can read clinical tables and the analytics views
 GRANT SELECT ON Patients, Cases, Specimens, Reports, IHC_Results,
                 Morphological_Features, Case_Audit_Logs, Report_Addenda

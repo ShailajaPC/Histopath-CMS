@@ -3,6 +3,29 @@
 -- Run this in pgAdmin after 01_schema.sql
 -- ============================================================
 
+-- An older version of the signed-report trigger blocks EVERY update of a signed report,
+-- including this search-index back-fill. Install the correct version first:
+-- clinical fields stay locked, derived columns (embedding / search_vector) may change.
+CREATE OR REPLACE FUNCTION prevent_signed_report_edit()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF OLD.is_signed = TRUE THEN
+        IF NEW.is_signed             IS DISTINCT FROM OLD.is_signed
+        OR NEW.signed_at             IS DISTINCT FROM OLD.signed_at
+        OR NEW.diagnosis             IS DISTINCT FROM OLD.diagnosis
+        OR NEW.icd_code              IS DISTINCT FROM OLD.icd_code
+        OR NEW.category              IS DISTINCT FROM OLD.category
+        OR NEW.microscopic_findings  IS DISTINCT FROM OLD.microscopic_findings
+        OR NEW.synoptic_data         IS DISTINCT FROM OLD.synoptic_data
+        OR NEW.pathologist_id        IS DISTINCT FROM OLD.pathologist_id
+        OR NEW.case_id               IS DISTINCT FROM OLD.case_id THEN
+            RAISE EXCEPTION 'Cannot modify a signed report. Use Report Addenda instead.';
+        END IF;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Add tsvector column to Reports
 ALTER TABLE Reports
 ADD COLUMN IF NOT EXISTS search_vector tsvector;
