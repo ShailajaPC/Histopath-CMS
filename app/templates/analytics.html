@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}— Analytics{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">📊</span>
+  <h1>Case Analytics & Statistics</h1>
+</div>
+
+<!-- Summary Cards -->
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">{{ total_cases }}</div>
+    <div class="label">Total Cases</div>
+  </div>
+  <div class="stat-card breast">
+    <div class="number">{{ malignant_count }}</div>
+    <div class="label">Malignant</div>
+  </div>
+  <div class="stat-card colon">
+    <div class="number">{{ benign_count }}</div>
+    <div class="label">Benign</div>
+  </div>
+  <div class="stat-card orange">
+    <div class="number">{{ inflammatory_count }}</div>
+    <div class="label">Inflammatory</div>
+  </div>
+  <div class="stat-card blue">
+    <div class="number">{{ avg_age }}</div>
+    <div class="label">Avg Patient Age</div>
+  </div>
+</div>
+
+<!-- Diagnosis Distribution -->
+<div class="card">
+  <div class="card-title">📋 Top Diagnoses by Frequency</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Diagnosis</th><th>Organ</th><th>Category</th><th>Cases</th><th>Avg Age</th><th>Bar</th></tr>
+    {% for d in diagnoses %}
+    <tr>
+      <td><strong>{{ d.diagnosis }}</strong></td>
+      <td>{{ d.organ_site }}</td>
+      <td><span class="badge {{ d.category }}">{{ d.category }}</span></td>
+      <td>{{ d.case_count }}</td>
+      <td>{{ d.avg_patient_age }} yrs</td>
+      <td>
+        <div style="background:linear-gradient(90deg,var(--accent),var(--primary));
+                    height:10px;border-radius:5px;
+                    width:{{ [d.case_count * 15, 150]|min }}px;">
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+<!-- IHC Positivity Rates -->
+<div class="card">
+  <div class="card-title">🧪 IHC Marker Positivity Rates by Organ</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Organ</th><th>Marker</th><th>Total Tested</th><th>Positive</th><th>Positivity Rate</th></tr>
+    {% for i in ihc_rates %}
+    <tr>
+      <td>{{ i.organ_site }}</td>
+      <td><strong>{{ i.marker_name }}</strong></td>
+      <td>{{ i.total_tested }}</td>
+      <td>{{ i.positive_count }}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="background:linear-gradient(90deg,#e91e8c,#9c27b0);
+                      height:8px;border-radius:4px;
+                      width:{{ i.positivity_rate|int }}px;max-width:100px;"></div>
+          <span style="font-weight:700;color:var(--primary);">{{ i.positivity_rate }}%</span>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+<!-- Gender Distribution -->
+<div class="card">
+  <div class="card-title">👥 Gender Distribution by Organ Site</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Organ Site</th><th>Gender</th><th>Cases</th><th>Avg Age</th></tr>
+    {% for g in gender_dist %}
+    <tr>
+      <td>{{ g.organ_site }}</td>
+      <td>{{ g.gender }}</td>
+      <td>{{ g.case_count }}</td>
+      <td>{{ g.avg_age }} yrs</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

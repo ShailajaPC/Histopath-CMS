@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}— All Reports{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">📁</span>
+  <h1>All Histopathology Reports</h1>
+</div>
+
+<form method="GET">
+<div class="filter-bar">
+  <div class="filter-group">
+    <label>Organ Site</label>
+    <select name="organ">
+      <option value="">All Organs</option>
+      <option value="Breast"     {% if organ=='Breast'     %}selected{% endif %}>Breast</option>
+      <option value="Colon"      {% if organ=='Colon'      %}selected{% endif %}>Colon</option>
+      <option value="Lymph Node" {% if organ=='Lymph Node' %}selected{% endif %}>Lymph Node</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Category</label>
+    <select name="category">
+      <option value="">All Categories</option>
+      <option value="Malignant"    {% if category=='Malignant'    %}selected{% endif %}>Malignant</option>
+      <option value="Benign"       {% if category=='Benign'       %}selected{% endif %}>Benign</option>
+      <option value="Inflammatory" {% if category=='Inflammatory' %}selected{% endif %}>Inflammatory</option>
+      <option value="Reactive"     {% if category=='Reactive'     %}selected{% endif %}>Reactive</option>
+    </select>
+  </div>
+  <div class="filter-group">
+    <label>Search Patient / Diagnosis</label>
+    <input type="text" name="search" value="{{ search }}" placeholder="Search...">
+  </div>
+  <button type="submit" class="btn btn-primary">Filter</button>
+  <a href="/reports" class="btn btn-accent">Clear</a>
+</div>
+</form>
+
+<div class="card">
+  <div class="table-wrap">
+  <table>
+    <tr>
+      <th>Case No.</th><th>Patient</th><th>Age</th><th>Gender</th>
+      <th>Organ</th><th>Diagnosis</th><th>Category</th>
+      <th>Pathologist</th><th>Priority</th><th>Date</th><th>Action</th>
+    </tr>
+    {% for r in reports %}
+    <tr>
+      <td><strong>{{ r.case_number }}</strong></td>
+      <td>{{ r.patient }}</td>
+      <td>{{ r.age }}</td>
+      <td>{{ r.gender }}</td>
+      <td>{{ r.organ_site }}</td>
+      <td>{{ r.diagnosis }}</td>
+      <td><span class="badge {{ r.category }}">{{ r.category }}</span></td>
+      <td>{{ r.pathologist }}</td>
+      <td><span class="badge {{ r.priority }}">{{ r.priority }}</span></td>
+      <td>{{ r.signed_at|string|truncate(10,true,'') if r.signed_at else '—' }}</td>
+      <td><a class="btn btn-primary btn-sm" href="/report/{{ r.report_id }}">View</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

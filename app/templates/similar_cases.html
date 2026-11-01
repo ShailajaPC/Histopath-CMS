@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}— Similar Case Retrieval{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">🔍</span>
+  <h1>Similar Case Retrieval Engine</h1>
+</div>
+
+<div class="card">
+  <div class="mode-tabs">
+    <div class="mode-tab {% if search_mode=='ihc' %}active{% endif %}"
+         onclick="setMode('ihc')">🧪 IHC Marker Search</div>
+    <div class="mode-tab {% if search_mode=='semantic' %}active{% endif %}"
+         onclick="setMode('semantic')">🤖 Semantic Search (AI)</div>
+  </div>
+
+  <form method="POST" id="searchForm">
+    <input type="hidden" name="search_mode" id="search_mode" value="{{ search_mode }}">
+
+    <!-- IHC SEARCH -->
+    <div id="ihc_fields" {% if search_mode=='semantic' %}style="display:none"{% endif %}>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Organ Site</label>
+          <select name="organ">
+            <option value="Breast"     {% if form.get('organ')=='Breast'     %}selected{% endif %}>Breast</option>
+            <option value="Colon"      {% if form.get('organ')=='Colon'      %}selected{% endif %}>Colon</option>
+            <option value="Lymph Node" {% if form.get('organ')=='Lymph Node' %}selected{% endif %}>Lymph Node</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Diagnosis Category</label>
+          <select name="category">
+            <option value="Malignant"    {% if form.get('category')=='Malignant'    %}selected{% endif %}>Malignant</option>
+            <option value="Benign"       {% if form.get('category')=='Benign'       %}selected{% endif %}>Benign</option>
+            <option value="Inflammatory" {% if form.get('category')=='Inflammatory' %}selected{% endif %}>Inflammatory</option>
+            <option value="Reactive"     {% if form.get('category')=='Reactive'     %}selected{% endif %}>Reactive</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>IHC Marker</label>
+          <select name="marker">
+            {% for m in ['ER','PR','HER2','Ki-67','CK5/6','CDX2','CK20','MLH1','MSH2','CK7','CD20','CD3','CD10','BCL2'] %}
+            <option value="{{ m }}" {% if form.get('marker')==m %}selected{% endif %}>{{ m }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>IHC Result</label>
+          <select name="result">
+            {% for r in ['Positive','Negative','1+','2+','3+','Intact','Lost','Low (<15%)','High (>15%)','Low (<30%)','High (>30%)'] %}
+            <option value="{{ r }}" {% if form.get('result')==r %}selected{% endif %}>{{ r }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANTIC SEARCH -->
+    <div id="semantic_fields" {% if search_mode=='ihc' %}style="display:none"{% endif %}>
+      <div class="form-group full" style="margin-bottom:16px;">
+        <label>Describe the case in your own words (AI will find semantically similar cases)</label>
+        <textarea name="query_text" rows="3"
+          placeholder="e.g. infiltrating ductal carcinoma with solid growth pattern, high mitotic activity, ER positive..."
+          style="width:100%;resize:vertical;">{{ query_text }}</textarea>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);margin-bottom:16px;">
+        💡 This uses a 384-dimensional sentence-transformer model (all-MiniLM-L6-v2) with HNSW vector indexing
+        to find cases with semantically similar microscopic descriptions — even if exact words differ.
+      </p>
+    </div>
+
+    <button type="submit">🔍 Find Similar Cases</button>
+  </form>
+</div>
+
+{% if request.method == 'POST' %}
+  {% if results %}
+  <div class="result-banner success">✅ {{ results|length }} similar case(s) found</div>
+  <div class="card">
+    <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Patient</th><th>Age</th><th>Organ</th><th>Diagnosis</th>
+        <th>Category</th>
+        {% if search_mode=='semantic' %}<th>Similarity</th>{% else %}<th>Marker</th><th>Result</th>{% endif %}
+        <th>Date</th><th>Action</th>
+      </tr>
+      {% for r in results %}
+      <tr>
+        <td>{{ r.patient_name }}</td>
+        <td>{{ r.age }}</td>
+        <td>{{ r.organ_site }}</td>
+        <td>{{ r.diagnosis }}</td>
+        <td><span class="badge {{ r.category }}">{{ r.category }}</span></td>
+        {% if search_mode=='semantic' %}
+        <td><span class="sim-score">{{ "%.1f"|format(r.similarity_score * 100) }}%</span></td>
+        {% else %}
+        <td>{{ r.marker_name }}</td>
+        <td>{% if r.ihc_result in ['Positive','Intact'] %}<span class="pos">{{ r.ihc_result }}</span>
+            {% elif r.ihc_result in ['Negative','Lost']  %}<span class="neg">{{ r.ihc_result }}</span>
+            {% else %}<span class="eq">{{ r.ihc_result }}</span>{% endif %}</td>
+        {% endif %}
+        <td>{{ r.signed_at|string|truncate(10,true,'') if r.signed_at else '—' }}</td>
+        <td><a class="btn btn-primary btn-sm" href="/report/{{ r.report_id }}">View</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+  {% else %}
+  <div class="result-banner error">❌ No similar cases found for this query.</div>
+  {% endif %}
+{% endif %}
+
+<script>
+function setMode(mode) {
+  document.getElementById('search_mode').value = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('ihc_fields').style.display      = mode==='ihc'      ? '' : 'none';
+  document.getElementById('semantic_fields').style.display = mode==='semantic' ? '' : 'none';
+}
+</script>
+{% endblock %}

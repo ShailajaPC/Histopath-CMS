@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}— TAT Report{% endblock %}
+{% block content %}
+<div class="page-header"><span class="icon">⏱️</span><h1>Turnaround Time (TAT) Report</h1></div>
+<div class="card">
+  <div class="card-title">Average TAT by Pathologist & Organ Site</div>
+  {% if tat_data %}
+  <div class="table-wrap">
+  <table>
+    <tr><th>Pathologist</th><th>Organ Site</th><th>Avg TAT (Hours)</th><th>SLA Status</th></tr>
+    {% for t in tat_data %}
+    <tr>
+      <td><strong>{{ t.pathologist_name }}</strong></td>
+      <td>{{ t.organ_site }}</td>
+      <td>{{ t.avg_tat_hours }}h</td>
+      <td>
+        {% if t.avg_tat_hours and t.avg_tat_hours <= 24 %}
+          <span class="badge Benign">Within SLA</span>
+        {% elif t.avg_tat_hours and t.avg_tat_hours <= 72 %}
+          <span class="badge Reactive">Borderline</span>
+        {% else %}
+          <span class="badge Malignant">SLA Breach</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% else %}
+  <p style="color:var(--muted);">No signed reports with TAT data available yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

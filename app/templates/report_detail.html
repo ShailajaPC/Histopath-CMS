@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}— Report Detail{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">🧬</span>
+  <h1>{{ report.case_number }}
+    <span class="badge {{ report.priority }}" style="font-size:.7rem;vertical-align:middle;">{{ report.priority }}</span>
+    {% if report.is_signed %}<span class="badge SIGNED" style="font-size:.7rem;vertical-align:middle;">✓ Signed</span>{% endif %}
+  </h1>
+</div>
+
+<div class="detail-grid">
+  <div class="detail-box">
+    <h3>👤 Patient Information</h3>
+    <div class="detail-row"><span class="label">Name</span><span class="value">{{ report.patient }}</span></div>
+    <div class="detail-row"><span class="label">Age / Gender</span><span class="value">{{ report.age }} yrs / {{ report.gender }}</span></div>
+    <div class="detail-row"><span class="label">Organ Site</span><span class="value">{{ report.organ_site }}</span></div>
+    <div class="detail-row"><span class="label">Biopsy Type</span><span class="value">{{ report.biopsy_type }}</span></div>
+    <div class="detail-row"><span class="label">Collection Date</span><span class="value">{{ report.collection_date }}</span></div>
+    <div class="detail-row"><span class="label">Fixation</span><span class="value">{{ report.fixation_type }}</span></div>
+  </div>
+  <div class="detail-box">
+    <h3>🩺 Diagnosis</h3>
+    <div class="detail-row"><span class="label">Diagnosis</span><span class="value">{{ report.diagnosis }}</span></div>
+    <div class="detail-row"><span class="label">ICD Code</span><span class="value">{{ report.icd_code }}</span></div>
+    <div class="detail-row"><span class="label">Category</span><span class="value"><span class="badge {{ report.category }}">{{ report.category }}</span></span></div>
+    <div class="detail-row"><span class="label">Pathologist</span><span class="value">{{ report.pathologist }}</span></div>
+    <div class="detail-row"><span class="label">Signed At</span><span class="value">{{ report.signed_at|string|truncate(19,true,'') if report.signed_at else 'Not signed' }}</span></div>
+    <div class="detail-row"><span class="label">Case Status</span><span class="value"><span class="badge SIGNED">{{ report.status }}</span></span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">📝 Gross Description</div>
+  <div class="text-box">{{ report.synoptic_data.get('gross_description','N/A') if report.synoptic_data else 'N/A' }}</div>
+  <div class="card-title">🔬 Microscopic Findings</div>
+  <div class="text-box">{{ report.microscopic_findings }}</div>
+</div>
+
+<div class="card">
+  <div class="card-title">🧪 IHC Panel Results</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Marker</th><th>Result</th><th>Intensity</th></tr>
+    {% for i in ihc %}
+    <tr>
+      <td><strong>{{ i.marker_name }}</strong></td>
+      <td>
+        {% if i.result in ['Positive','Intact'] %}<span class="pos">● {{ i.result }}</span>
+        {% elif i.result in ['Negative','Lost']  %}<span class="neg">● {{ i.result }}</span>
+        {% else %}<span class="eq">● {{ i.result }}</span>{% endif %}
+      </td>
+      <td>{{ i.intensity }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🔎 Morphological Features</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Feature</th><th>Value</th></tr>
+    {% for m in morph %}
+    <tr>
+      <td>{{ m.feature_type | replace('_',' ') | title }}</td>
+      <td><strong>{{ m.feature_value }}</strong></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+{% if addenda %}
+<div class="card">
+  <div class="card-title">📋 Report Addenda (Amendments)</div>
+  <ul class="timeline">
+    {% for a in addenda %}
+    <li>
+      <div class="tl-time">{{ a.created_at|string|truncate(19,true,'') }} — {{ a.author_name }}</div>
+      <div class="tl-title">{{ a.old_diagnosis }} → <strong>{{ a.new_diagnosis }}</strong></div>
+      <div class="tl-detail">{{ a.revision_note }}</div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<div style="display:flex;gap:12px;margin-top:8px;">
+  <a class="btn btn-accent" href="/similar">🔍 Find Similar Cases</a>
+  <a class="btn btn-primary" href="/reports">← Back to Reports</a>
+  <a class="btn btn-accent" href="/export_pdf/{{ report.report_id }}">📄 Export PDF</a>
+</div>
+{% endblock %}

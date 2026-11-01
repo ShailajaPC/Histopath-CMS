@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}— Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">🔬</span>
+  <h1>Dashboard</h1>
+</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">{{ total_reports }}</div>
+    <div class="label">Total Reports</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">{{ total_patients }}</div>
+    <div class="label">Total Patients</div>
+  </div>
+  {% for o in organ_counts %}
+  <div class="stat-card {% if o.organ_site=='Breast' %}breast{% elif o.organ_site=='Colon' %}colon{% else %}lymph{% endif %}">
+    <div class="number">{{ o.cnt }}</div>
+    <div class="label">{{ o.organ_site }} Cases</div>
+  </div>
+  {% endfor %}
+  <div class="stat-card orange">
+    <div class="number">{{ amendments }}</div>
+    <div class="label">Amended Reports</div>
+  </div>
+  <div class="stat-card blue">
+    <div class="number">{{ urgent }}</div>
+    <div class="label">Urgent Pending</div>
+  </div>
+</div>
+
+{% if sla_breaches %}
+<div class="card">
+  <div class="card-title">⚠️ SLA Breach Alerts</div>
+  {% for s in sla_breaches %}
+  <div class="sla-alert">
+    <div class="case-info">
+      {{ s.case_number }} — {{ s.patient_name }}
+      <span class="badge {{ s.priority }}">{{ s.priority }}</span>
+    </div>
+    <div class="hours">{{ s.hours_elapsed }}h elapsed / SLA: {{ s.sla_hours }}h</div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <div class="card-title">📋 Recent Reports</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Report ID</th><th>Patient</th><th>Organ</th><th>Diagnosis</th><th>Category</th><th>Date</th><th>Status</th><th>Action</th></tr>
+    {% for r in recent %}
+    <tr>
+      <td><strong>{{ r.report_id|string|truncate(8,true,'') }}...</strong></td>
+      <td>{{ r.patient }}</td>
+      <td>{{ r.organ_site }}</td>
+      <td>{{ r.diagnosis }}</td>
+      <td><span class="badge {{ r.category }}">{{ r.category }}</span></td>
+      <td>{{ r.signed_at|string|truncate(10,true,'') if r.signed_at else 'Pending' }}</td>
+      <td>{% if r.is_signed %}<span class="badge SIGNED">Signed</span>{% else %}Draft{% endif %}</td>
+      <td><a class="btn btn-primary btn-sm" href="/report/{{ r.report_id }}">View</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

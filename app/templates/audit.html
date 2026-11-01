@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}— Audit Log{% endblock %}
+{% block content %}
+<div class="page-header"><span class="icon">📝</span><h1>Report Amendment Audit Log</h1></div>
+
+<div class="card">
+  <div class="card-title">Report Addenda</div>
+  {% if logs %}
+  <ul class="timeline">
+    {% for l in logs %}
+    <li>
+      <div class="tl-time">{{ l.created_at|string|truncate(19,true,'') }} — {{ l.amended_by }}</div>
+      <div class="tl-title">
+        Patient: {{ l.patient }} |
+        <a href="/report/{{ l.report_id }}" style="color:var(--accent);">View Report</a>
+      </div>
+      <div class="tl-detail">
+        <strong>{{ l.old_diagnosis }}</strong> →
+        <strong style="color:var(--primary)">{{ l.new_diagnosis }}</strong><br>
+        <em>{{ l.revision_note }}</em>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p style="color:var(--muted);">No amendments recorded yet.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <div class="card-title">Case Status Change Log</div>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Action</th><th>Old Status</th><th>New Status</th><th>Performed By</th><th>Timestamp</th></tr>
+    {% for l in case_logs %}
+    <tr>
+      <td><strong>{{ l.action }}</strong></td>
+      <td>{{ l.old_status or '—' }}</td>
+      <td><span class="badge SIGNED">{{ l.new_status }}</span></td>
+      <td>{{ l.performed_by_name }}</td>
+      <td>{{ l.timestamp|string|truncate(19,true,'') }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

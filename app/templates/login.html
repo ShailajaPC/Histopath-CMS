@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HistoPath CMS — Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <h2>🔬 HistoPath CMS</h2>
+      <p>Histopathology Case & Report Management System</p>
+    </div>
+
+    {% if error %}
+    <div class="error-msg">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter password" required>
+      </div>
+      <button type="submit">Login →</button>
+    </form>
+
+    <p style="text-align:center;margin-top:16px;font-size:.82rem;color:#666;">
+  New user? <a href="/register" style="color:#2196f3;">Register here</a>
+</p>
+
+    <div class="login-hint">
+      <strong>Demo Credentials:</strong>
+      Pathologist: meera@histopath.com / pass123<br>
+      Admin: admin@histopath.com / admin123<br>
+      Technician: ravi@histopath.com / tech123
+    </div>
+  </div>
+</div>
+</body>
+</html>

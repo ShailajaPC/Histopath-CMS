@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}— Pending Cases{% endblock %}
+{% block content %}
+<div class="page-header"><span class="icon">⏳</span><h1>Pending Cases</h1></div>
+<div class="card">
+  <div class="card-title">Cases Awaiting Sign-off (Sorted by Priority)</div>
+  {% if cases %}
+  <div class="table-wrap">
+  <table>
+    <tr><th>Case No.</th><th>Patient</th><th>Age</th><th>Priority</th><th>Status</th><th>Accessioned</th><th>Hours Pending</th></tr>
+    {% for c in cases %}
+    <tr>
+      <td><strong>{{ c.case_number }}</strong></td>
+      <td>{{ c.patient_name }}</td>
+      <td>{{ c.age }}</td>
+      <td><span class="badge {{ c.priority }}">{{ c.priority }}</span></td>
+      <td>{{ c.status }}</td>
+      <td>{{ c.accessioned_at|string|truncate(10,true,'') }}</td>
+      <td>
+        {% if c.hours_pending > 24 %}
+          <span style="color:var(--danger);font-weight:700;">{{ "%.1f"|format(c.hours_pending) }}h ⚠️</span>
+        {% else %}
+          {{ "%.1f"|format(c.hours_pending) }}h
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  {% else %}
+  <p style="color:var(--muted);">No pending cases — all cases are signed off! ✅</p>
+  {% endif %}
+</div>
+{% endblock %}

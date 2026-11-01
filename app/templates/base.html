@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HistoPath CMS {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  <a class="brand" href="/"><span>Histo</span>Path CMS</a>
+  <ul>
+    <li><a href="/">Dashboard</a></li>
+    <li><a href="/reports">All Reports</a></li>
+    <li><a href="/similar">Similar Case Retrieval</a></li>
+    <li><a href="/pending">Pending Cases</a></li>
+    <li><a href="/tat">TAT Report</a></li>
+    <li><a href="/audit">Audit Log</a></li>
+    <li><a href="/add_case">➕ New Case</a></li>
+    <li><a href="/search">🔎 Search</a></li>
+    <li><a href="/differential">🧬 Differential Dx</a></li>
+    <li><a href="/analytics">📊 Analytics</a></li>
+    <li>
+      <span class="nav-user">{{ session.user_name }}
+        <span class="nav-role">{{ session.role }}</span>
+      </span>
+    </li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+</nav>
+<div class="container">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HistoPath CMS — Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <h2>🔬 HistoPath CMS</h2>
+      <p>Create New Account</p>
+    </div>
+
+    {% if error %}
+    <div class="error-msg">⚠️ {{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Dr. Your Name" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create password" required>
+      </div>
+      <div class="form-group">
+        <label>Role</label>
+        <select name="role">
+          <option value="PATHOLOGIST">Pathologist</option>
+          <option value="TECHNICIAN">Lab Technician</option>
+          <option value="ADMIN">Admin</option>
+        </select>
+      </div>
+      <button type="submit">Register →</button>
+    </form>
+
+    <p style="text-align:center;margin-top:16px;font-size:.82rem;color:var(--muted);">
+      Already have an account? <a href="/login" style="color:var(--accent);">Login here</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>

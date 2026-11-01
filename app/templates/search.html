@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}— Search{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">🔎</span>
+  <h1>Full Text Search</h1>
+</div>
+
+<div class="card">
+  <div class="card-title">Search across all reports, diagnoses and patients</div>
+  <form method="GET">
+    <div style="display:flex;gap:12px;align-items:flex-end;">
+      <div class="filter-group" style="flex:1;">
+        <label>Search Query</label>
+        <input type="text" name="q" value="{{ q }}"
+          placeholder="e.g. ductal carcinoma, ER positive, TCGA-A1..." style="width:100%;">
+      </div>
+      <div class="filter-group">
+        <label>Search In</label>
+        <select name="search_in">
+          <option value="all"      {% if search_in=='all'      %}selected{% endif %}>All Fields</option>
+          <option value="diagnosis"{% if search_in=='diagnosis' %}selected{% endif %}>Diagnosis Only</option>
+          <option value="micro"    {% if search_in=='micro'     %}selected{% endif %}>Microscopic Findings</option>
+          <option value="patient"  {% if search_in=='patient'   %}selected{% endif %}>Patient Name</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="padding:9px 24px;">🔍 Search</button>
+      {% if q %}<a href="/search" class="btn btn-accent" style="padding:9px 18px;">Clear</a>{% endif %}
+    </div>
+  </form>
+</div>
+
+{% if q %}
+  {% if results %}
+  <div class="result-banner success">
+    ✅ {{ results|length }} result(s) found for "<strong>{{ q }}</strong>"
+  </div>
+  <div class="card">
+    <div class="table-wrap">
+    <table>
+      <tr><th>Case No.</th><th>Patient</th><th>Age</th><th>Organ</th>
+          <th>Diagnosis</th><th>Category</th><th>Rank</th><th>Action</th></tr>
+      {% for r in results %}
+      <tr>
+        <td><strong>{{ r.case_number }}</strong></td>
+        <td>{{ r.patient }}</td>
+        <td>{{ r.age }}</td>
+        <td>{{ r.organ_site }}</td>
+        <td>{{ r.diagnosis }}</td>
+        <td><span class="badge {{ r.category }}">{{ r.category }}</span></td>
+        <td><span style="color:var(--accent);font-weight:700;">{{ "%.2f"|format(r.rank) }}</span></td>
+        <td><a class="btn btn-primary btn-sm" href="/report/{{ r.report_id }}">View</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+  {% else %}
+  <div class="result-banner error">❌ No results found for "{{ q }}"</div>
+  {% endif %}
+{% endif %}
+{% endblock %}

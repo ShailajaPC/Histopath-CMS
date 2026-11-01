@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% block title %}— Add New Case{% endblock %}
+{% block content %}
+<div class="page-header">
+  <span class="icon">➕</span>
+  <h1>Add New Case & Report</h1>
+</div>
+
+{% if success %}
+<div class="result-banner success">✅ Case {{ case_number }} created successfully! <a href="/report/{{ report_id }}" style="color:var(--success);font-weight:700;">View Report →</a></div>
+{% endif %}
+
+{% if error %}
+<div class="result-banner error">❌ {{ error }}</div>
+{% endif %}
+
+<form method="POST">
+
+  <!-- PATIENT INFO -->
+  <div class="card">
+    <div class="card-title">👤 Patient Information</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="patient_name" placeholder="e.g. Priya Sharma" required>
+      </div>
+      <div class="form-group">
+        <label>UHID (Hospital ID)</label>
+        <input type="text" name="uhid" placeholder="e.g. UHID-2024-001" required>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" name="age" placeholder="e.g. 45" min="1" max="120" required>
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select name="gender">
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" name="contact" placeholder="e.g. 9876543210">
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECIMEN INFO -->
+  <div class="card">
+    <div class="card-title">🧫 Specimen Details</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Organ Site</label>
+        <select name="organ_site">
+          <option value="Breast">Breast</option>
+          <option value="Colon">Colon</option>
+          <option value="Lymph Node">Lymph Node</option>
+          <option value="Lung">Lung</option>
+          <option value="Thyroid">Thyroid</option>
+          <option value="Cervix">Cervix</option>
+          <option value="Skin">Skin</option>
+          <option value="Prostate">Prostate</option>
+          <option value="Liver">Liver</option>
+          <option value="Kidney">Kidney</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Biopsy Type</label>
+        <select name="biopsy_type">
+          <option value="Core Needle Biopsy">Core Needle Biopsy</option>
+          <option value="Excision Biopsy">Excision Biopsy</option>
+          <option value="Incision Biopsy">Incision Biopsy</option>
+          <option value="FNAC">FNAC</option>
+          <option value="Mastectomy">Mastectomy</option>
+          <option value="Colectomy">Colectomy</option>
+          <option value="Wide Local Excision">Wide Local Excision</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Collection Date</label>
+        <input type="date" name="collection_date" required>
+      </div>
+      <div class="form-group">
+        <label>Priority</label>
+        <select name="priority">
+          <option value="ROUTINE">Routine</option>
+          <option value="URGENT">Urgent</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Fixation Type</label>
+        <select name="fixation_type">
+          <option value="Formalin Fixed Paraffin Embedded (FFPE)">FFPE</option>
+          <option value="Fresh Frozen">Fresh Frozen</option>
+          <option value="Alcohol Fixed">Alcohol Fixed</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div class="card">
+    <div class="card-title">📝 Histopathology Report</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Diagnosis</label>
+        <input type="text" name="diagnosis" placeholder="e.g. Invasive Ductal Carcinoma" required>
+      </div>
+      <div class="form-group">
+        <label>ICD Code</label>
+        <input type="text" name="icd_code" placeholder="e.g. C50.9">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category">
+          <option value="Malignant">Malignant</option>
+          <option value="Benign">Benign</option>
+          <option value="Inflammatory">Inflammatory</option>
+          <option value="Reactive">Reactive</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:12px;">
+      <label>Gross Description</label>
+      <textarea name="gross_desc" rows="3"
+        placeholder="e.g. Mastectomy specimen weighing 280g. Cut surface shows a grey-white firm mass measuring 3.5cm with irregular margins..."
+        style="width:100%;resize:vertical;"></textarea>
+    </div>
+    <div class="form-group" style="margin-top:12px;">
+      <label>Microscopic Findings</label>
+      <textarea name="microscopic_desc" rows="4"
+        placeholder="e.g. Sections show infiltrating malignant epithelial cells arranged in acinar pattern. Nuclei show pleomorphism with prominent nucleoli. Mitotic figures frequent..."
+        style="width:100%;resize:vertical;" required></textarea>
+    </div>
+  </div>
+
+  <!-- IHC PANEL -->
+  <div class="card">
+    <div class="card-title">🧪 IHC Panel Results</div>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Marker</th><th>Result</th><th>Intensity</th></tr>
+      {% for marker in ['ER','PR','HER2','Ki-67','CK5/6','CDX2','CK20','MLH1','MSH2','CD20','CD3','TTF-1'] %}
+      <tr>
+        <td><strong>{{ marker }}</strong></td>
+        <td>
+          <select name="ihc_result_{{ marker }}">
+            <option value="">— Not Done —</option>
+            <option value="Positive">Positive</option>
+            <option value="Negative">Negative</option>
+            <option value="1+">1+</option>
+            <option value="2+">2+</option>
+            <option value="3+">3+</option>
+            <option value="Intact">Intact</option>
+            <option value="Lost">Lost</option>
+            <option value="Low (<15%)">Low (&lt;15%)</option>
+            <option value="High (>15%)">High (&gt;15%)</option>
+          </select>
+        </td>
+        <td>
+          <select name="ihc_intensity_{{ marker }}">
+            <option value="1+">1+</option>
+            <option value="2+">2+</option>
+            <option value="3+">3+</option>
+          </select>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+
+  <!-- MORPHOLOGICAL FEATURES -->
+  <div class="card">
+    <div class="card-title">🔬 Morphological Features</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Cell Arrangement</label>
+        <select name="cell_arrangement">
+          <option value="">— Select —</option>
+          <option value="acinar">Acinar</option>
+          <option value="solid sheets">Solid Sheets</option>
+          <option value="trabecular">Trabecular</option>
+          <option value="cribriform">Cribriform</option>
+          <option value="glandular">Glandular</option>
+          <option value="mucinous">Mucinous</option>
+          <option value="diffuse">Diffuse</option>
+          <option value="follicular">Follicular</option>
+          <option value="nodular">Nodular</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nuclear Grade</label>
+        <select name="nuclear_grade">
+          <option value="">— Select —</option>
+          <option value="Grade 1">Grade 1</option>
+          <option value="Grade 2">Grade 2</option>
+          <option value="Grade 3">Grade 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mitotic Activity</label>
+        <select name="mitotic_activity">
+          <option value="">— Select —</option>
+          <option value="Low">Low</option>
+          <option value="Moderate">Moderate</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Necrosis</label>
+        <select name="necrosis">
+          <option value="">— Select —</option>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Lymphovascular Invasion</label>
+        <select name="lymphovascular_invasion">
+          <option value="">— Select —</option>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Differentiation</label>
+        <select name="differentiation">
+          <option value="">— Select —</option>
+          <option value="Well">Well Differentiated</option>
+          <option value="Moderately">Moderately Differentiated</option>
+          <option value="Poorly">Poorly Differentiated</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-bottom:30px;">
+    <button type="submit" style="font-size:1rem;padding:13px 32px;">➕ Submit New Case</button>
+    <a href="/reports" class="btn btn-accent" style="padding:13px 24px;">Cancel</a>
+  </div>
+
+</form>
+{% endblock %}
