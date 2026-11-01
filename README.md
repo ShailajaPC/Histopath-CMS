@@ -55,7 +55,8 @@ npm run dev          # -> http://localhost:3000
 |---|:-:|:-:|:-:|
 | Dashboard, All Reports, Similar Cases, Differential Dx | ✅ | ✅ | ✅ |
 | Analytics, Audit Log, TAT, SQL Insights | ✅ | ✅ | ❌ |
-| New case / edit-sign-delete own draft / addendum / embeddings (vector C-R-U-D) | ❌ | ✅ | ❌ |
+| New case (admin assigns it to a pathologist) | ✅ | ✅ | ❌ |
+| Edit-sign-delete own draft / addendum / embeddings (vector C-R-U-D) | ❌ | ✅ | ❌ |
 | **User management** (create, change role, disable, reset password, hierarchy) | ✅ | ❌ | ❌ |
 
 Enforcement in 3 layers: `pages/_app.js` + Navbar (UI) → `withAuth(handler, roles)` (API, JWT) →

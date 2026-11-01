@@ -10,7 +10,7 @@ const PAGE_ROLES = {
   '/audit':     ['PATHOLOGIST', 'ADMIN'],
   '/tat':       ['PATHOLOGIST', 'ADMIN'],
   '/insights':  ['PATHOLOGIST', 'ADMIN'],
-  '/add_case':  ['PATHOLOGIST'],
+  '/add_case':  ['PATHOLOGIST', 'ADMIN'],
   '/admin':     ['ADMIN'],
 };
 

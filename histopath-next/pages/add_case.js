@@ -18,7 +18,7 @@ export default function AddCase() {
     necrosis:'', lymphovascular_invasion:'', differentiation:'',
   });
   const [ihc, setIhc] = useState({});
-  const [pathId, setPathId] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const [paths, setPaths]   = useState([]);
   const [success, setSuccess] = useState(null);
   const [error, setError]     = useState('');
@@ -28,6 +28,10 @@ export default function AddCase() {
     // Get pathologist from token
     const name = localStorage.getItem('hp_name');
     setForm(f=>({...f, pathologist_name: name}));
+    if (localStorage.getItem('hp_role') === 'ADMIN') {
+      setIsAdmin(true);
+      apiFetch('/api/pathologists').then(r=>r.json()).then(d => Array.isArray(d) && setPaths(d));
+    }
   }, []);
 
   const set = (k,v) => setForm(f=>({...f,[k]:v}));
@@ -67,6 +71,15 @@ export default function AddCase() {
 
         <form onSubmit={handleSubmit}>
           <div className="card">
+            {isAdmin && (
+              <div className="form-group" style={{marginBottom:'18px'}}>
+                <label>Assign to pathologist * (they will review and sign the report)</label>
+                <select required value={form.pathologist_id||''} onChange={e=>set('pathologist_id',e.target.value)}>
+                  <option value="">— choose pathologist —</option>
+                  {paths.map(p=><option key={p.user_id} value={p.user_id}>{p.full_name}</option>)}
+                </select>
+              </div>
+            )}
             <div className="card-title">👤 Patient Information</div>
             <div className="form-grid">
               {[['patient_name','Full Name','text','e.g. Priya Sharma',true],

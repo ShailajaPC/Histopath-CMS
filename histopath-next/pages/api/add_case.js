@@ -1,4 +1,4 @@
-const { pool } = require('../../lib/db');
+const { pool, DB_ROLES } = require('../../lib/db');
 const { withAuth } = require('../../lib/auth');
 const { v4: uuidv4 } = require('uuid');
 
@@ -8,7 +8,14 @@ async function handler(req, res) {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
-    await client.query('SET LOCAL ROLE histo_pathologist');
+    await client.query(`SET LOCAL ROLE ${DB_ROLES[req.user.role]}`);   // fixed map, not user input
+    // A pathologist authors the report himself; an admin assigns it to a pathologist who will sign it.
+    let authorId = req.user.user_id;
+    if (req.user.role === 'ADMIN') {
+      const a = await client.query("SELECT user_id FROM Users WHERE user_id=$1::uuid AND role='PATHOLOGIST' AND is_active", [f.pathologist_id || null]);
+      if (!a.rows.length) throw Object.assign(new Error('Please choose the pathologist this case is assigned to'), { status: 400 });
+      authorId = a.rows[0].user_id;
+    }
     // Patient
     const pid = uuidv4();
     await client.query(
@@ -50,7 +57,7 @@ async function handler(req, res) {
       `INSERT INTO Reports (report_id,case_id,pathologist_id,microscopic_findings,
        diagnosis,icd_code,category,synoptic_data,is_signed,embedding)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,FALSE,$9::vector)`,
-      [report_id, case_id, req.user.user_id, f.microscopic_desc,
+      [report_id, case_id, authorId, f.microscopic_desc,
        f.diagnosis, f.icd_code||'', f.category, synoptic, embedding]
     );
 
@@ -87,10 +94,10 @@ async function handler(req, res) {
     res.status(200).json({ success: true, case_number, report_id });
   } catch (e) {
     await client.query('ROLLBACK');
-    res.status(500).json({ error: e.message });
+    res.status(e.status || 500).json({ error: e.message });
   } finally {
     client.release();
   }
 }
 
-export default withAuth(handler, ['PATHOLOGIST']);
+export default withAuth(handler, ['PATHOLOGIST', 'ADMIN']);

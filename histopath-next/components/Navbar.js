@@ -14,7 +14,7 @@ const LINKS = [
   { href: '/audit',        label: 'Audit Log',       roles: STAFF },
   { href: '/tat',          label: 'TAT Report',      roles: STAFF },
   { href: '/insights',     label: 'SQL Insights',    roles: STAFF },
-  { href: '/add_case',     label: '+ New Case',      roles: ['PATHOLOGIST'] },
+  { href: '/add_case',     label: '+ New Case',      roles: ['PATHOLOGIST', 'ADMIN'] },
   { href: '/admin',        label: '🛡 Admin',         roles: ['ADMIN'] },
 ];
 

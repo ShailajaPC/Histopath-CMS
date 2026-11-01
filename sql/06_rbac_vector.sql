@@ -134,8 +134,10 @@ GRANT INSERT ON Case_Audit_Logs, Report_Addenda                              TO 
 GRANT INSERT, UPDATE ON Patients, Cases, Specimens TO histo_technician;
 GRANT INSERT ON Case_Audit_Logs                    TO histo_technician;
 
--- Admin: manages users, read-only on clinical data
-GRANT INSERT, UPDATE ON Users TO histo_admin;   -- (SELECT on password_hash stays revoked)
+-- Admin: manages users AND can register cases (assigned to a pathologist); cannot edit/sign/delete reports
+GRANT INSERT, UPDATE ON Users TO histo_admin;
+GRANT INSERT, UPDATE ON Patients, Cases, Specimens TO histo_admin;
+GRANT INSERT ON Reports, IHC_Results, Morphological_Features, Case_Audit_Logs TO histo_admin;   -- (SELECT on password_hash stays revoked)
 
 -- Only pathologists may sign off a report / add addenda
 REVOKE EXECUTE ON PROCEDURE add_report_addendum(UUID, UUID, TEXT, TEXT) FROM PUBLIC;
