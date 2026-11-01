@@ -1,0 +1,241 @@
+feature_id,report_id,feature_type,feature_value
+1,1,cell_arrangement,trabecular
+2,1,nuclear_grade,Grade 1
+3,1,mitotic_activity,Moderate
+4,1,necrosis,Absent
+5,2,cell_arrangement,trabecular
+6,2,nuclear_grade,Grade 3
+7,2,mitotic_activity,High
+8,2,necrosis,Absent
+9,3,cell_arrangement,cribriform
+10,3,nuclear_grade,Grade 3
+11,3,mitotic_activity,Low
+12,3,necrosis,Present
+13,4,cell_arrangement,acinar
+14,4,nuclear_grade,Grade 2
+15,4,mitotic_activity,High
+16,4,necrosis,Present
+17,5,cell_arrangement,acinar
+18,5,nuclear_grade,Grade 2
+19,5,mitotic_activity,High
+20,5,necrosis,Present
+21,6,cell_arrangement,cribriform
+22,6,nuclear_grade,Grade 2
+23,6,mitotic_activity,Moderate
+24,6,necrosis,Present
+25,7,cell_arrangement,solid sheets
+26,7,nuclear_grade,Grade 1
+27,7,mitotic_activity,Moderate
+28,7,necrosis,Absent
+29,8,cell_arrangement,cribriform
+30,8,nuclear_grade,Grade 1
+31,8,mitotic_activity,High
+32,8,necrosis,Present
+33,9,cell_arrangement,solid sheets
+34,9,nuclear_grade,Grade 2
+35,9,mitotic_activity,High
+36,9,necrosis,Absent
+37,10,cell_arrangement,trabecular
+38,10,nuclear_grade,Grade 3
+39,10,mitotic_activity,Moderate
+40,10,necrosis,Present
+41,11,cell_arrangement,acinar
+42,11,nuclear_grade,Grade 3
+43,11,mitotic_activity,High
+44,11,necrosis,Absent
+45,12,cell_arrangement,acinar
+46,12,nuclear_grade,Grade 1
+47,12,mitotic_activity,High
+48,12,necrosis,Absent
+49,13,cell_arrangement,acinar
+50,13,nuclear_grade,Grade 1
+51,13,mitotic_activity,Moderate
+52,13,necrosis,Present
+53,14,cell_arrangement,trabecular
+54,14,nuclear_grade,Grade 3
+55,14,mitotic_activity,Moderate
+56,14,necrosis,Absent
+57,15,cell_arrangement,trabecular
+58,15,nuclear_grade,Grade 1
+59,15,mitotic_activity,Low
+60,15,necrosis,Present
+61,16,cell_arrangement,acinar
+62,16,nuclear_grade,Grade 1
+63,16,mitotic_activity,Moderate
+64,16,necrosis,Present
+65,17,cell_arrangement,trabecular
+66,17,nuclear_grade,Grade 2
+67,17,mitotic_activity,Moderate
+68,17,necrosis,Present
+69,18,cell_arrangement,trabecular
+70,18,nuclear_grade,Grade 1
+71,18,mitotic_activity,Moderate
+72,18,necrosis,Present
+73,19,cell_arrangement,solid sheets
+74,19,nuclear_grade,Grade 3
+75,19,mitotic_activity,Moderate
+76,19,necrosis,Present
+77,20,cell_arrangement,trabecular
+78,20,nuclear_grade,Grade 3
+79,20,mitotic_activity,Moderate
+80,20,necrosis,Absent
+81,21,cell_arrangement,glandular
+82,21,differentiation,Well
+83,21,lymphovascular_invasion,Absent
+84,21,perineural_invasion,Absent
+85,22,cell_arrangement,signet ring
+86,22,differentiation,Moderately
+87,22,lymphovascular_invasion,Absent
+88,22,perineural_invasion,Absent
+89,23,cell_arrangement,glandular
+90,23,differentiation,Poorly
+91,23,lymphovascular_invasion,Present
+92,23,perineural_invasion,Absent
+93,24,cell_arrangement,signet ring
+94,24,differentiation,Moderately
+95,24,lymphovascular_invasion,Present
+96,24,perineural_invasion,Present
+97,25,cell_arrangement,glandular
+98,25,differentiation,Poorly
+99,25,lymphovascular_invasion,Absent
+100,25,perineural_invasion,Absent
+101,26,cell_arrangement,glandular
+102,26,differentiation,Poorly
+103,26,lymphovascular_invasion,Absent
+104,26,perineural_invasion,Present
+105,27,cell_arrangement,glandular
+106,27,differentiation,Well
+107,27,lymphovascular_invasion,Present
+108,27,perineural_invasion,Absent
+109,28,cell_arrangement,mucinous
+110,28,differentiation,Moderately
+111,28,lymphovascular_invasion,Absent
+112,28,perineural_invasion,Absent
+113,29,cell_arrangement,signet ring
+114,29,differentiation,Poorly
+115,29,lymphovascular_invasion,Present
+116,29,perineural_invasion,Absent
+117,30,cell_arrangement,mucinous
+118,30,differentiation,Moderately
+119,30,lymphovascular_invasion,Absent
+120,30,perineural_invasion,Present
+121,31,cell_arrangement,signet ring
+122,31,differentiation,Well
+123,31,lymphovascular_invasion,Absent
+124,31,perineural_invasion,Absent
+125,32,cell_arrangement,glandular
+126,32,differentiation,Poorly
+127,32,lymphovascular_invasion,Present
+128,32,perineural_invasion,Absent
+129,33,cell_arrangement,glandular
+130,33,differentiation,Well
+131,33,lymphovascular_invasion,Absent
+132,33,perineural_invasion,Present
+133,34,cell_arrangement,signet ring
+134,34,differentiation,Well
+135,34,lymphovascular_invasion,Absent
+136,34,perineural_invasion,Absent
+137,35,cell_arrangement,glandular
+138,35,differentiation,Poorly
+139,35,lymphovascular_invasion,Present
+140,35,perineural_invasion,Present
+141,36,cell_arrangement,mucinous
+142,36,differentiation,Poorly
+143,36,lymphovascular_invasion,Present
+144,36,perineural_invasion,Absent
+145,37,cell_arrangement,mucinous
+146,37,differentiation,Moderately
+147,37,lymphovascular_invasion,Absent
+148,37,perineural_invasion,Absent
+149,38,cell_arrangement,mucinous
+150,38,differentiation,Poorly
+151,38,lymphovascular_invasion,Absent
+152,38,perineural_invasion,Present
+153,39,cell_arrangement,glandular
+154,39,differentiation,Well
+155,39,lymphovascular_invasion,Present
+156,39,perineural_invasion,Present
+157,40,cell_arrangement,mucinous
+158,40,differentiation,Moderately
+159,40,lymphovascular_invasion,Absent
+160,40,perineural_invasion,Absent
+161,41,infiltration_pattern,nodular
+162,41,cell_size,Large
+163,41,starry_sky,Present
+164,41,necrosis,Present
+165,42,infiltration_pattern,nodular
+166,42,cell_size,Large
+167,42,starry_sky,Absent
+168,42,necrosis,Absent
+169,43,infiltration_pattern,nodular
+170,43,cell_size,Small
+171,43,starry_sky,Present
+172,43,necrosis,Present
+173,44,infiltration_pattern,diffuse
+174,44,cell_size,Small
+175,44,starry_sky,Present
+176,44,necrosis,Present
+177,45,infiltration_pattern,follicular
+178,45,cell_size,Mixed
+179,45,starry_sky,Present
+180,45,necrosis,Present
+181,46,infiltration_pattern,diffuse
+182,46,cell_size,Mixed
+183,46,starry_sky,Present
+184,46,necrosis,Present
+185,47,infiltration_pattern,diffuse
+186,47,cell_size,Large
+187,47,starry_sky,Present
+188,47,necrosis,Present
+189,48,infiltration_pattern,nodular
+190,48,cell_size,Mixed
+191,48,starry_sky,Present
+192,48,necrosis,Present
+193,49,infiltration_pattern,nodular
+194,49,cell_size,Large
+195,49,starry_sky,Present
+196,49,necrosis,Absent
+197,50,infiltration_pattern,nodular
+198,50,cell_size,Large
+199,50,starry_sky,Present
+200,50,necrosis,Absent
+201,51,infiltration_pattern,nodular
+202,51,cell_size,Large
+203,51,starry_sky,Present
+204,51,necrosis,Present
+205,52,infiltration_pattern,follicular
+206,52,cell_size,Small
+207,52,starry_sky,Absent
+208,52,necrosis,Present
+209,53,infiltration_pattern,nodular
+210,53,cell_size,Mixed
+211,53,starry_sky,Absent
+212,53,necrosis,Present
+213,54,infiltration_pattern,nodular
+214,54,cell_size,Small
+215,54,starry_sky,Present
+216,54,necrosis,Absent
+217,55,infiltration_pattern,diffuse
+218,55,cell_size,Small
+219,55,starry_sky,Present
+220,55,necrosis,Absent
+221,56,infiltration_pattern,nodular
+222,56,cell_size,Small
+223,56,starry_sky,Present
+224,56,necrosis,Absent
+225,57,infiltration_pattern,diffuse
+226,57,cell_size,Small
+227,57,starry_sky,Absent
+228,57,necrosis,Present
+229,58,infiltration_pattern,diffuse
+230,58,cell_size,Large
+231,58,starry_sky,Present
+232,58,necrosis,Present
+233,59,infiltration_pattern,diffuse
+234,59,cell_size,Mixed
+235,59,starry_sky,Present
+236,59,necrosis,Absent
+237,60,infiltration_pattern,diffuse
+238,60,cell_size,Small
+239,60,starry_sky,Absent
+240,60,necrosis,Absent

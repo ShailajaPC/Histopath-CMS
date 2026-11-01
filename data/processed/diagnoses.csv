@@ -1,0 +1,61 @@
+diagnosis_id,diagnosis_name,icd_code,category
+1,Invasive Lobular Carcinoma,C50.9,Malignant
+2,Ductal Carcinoma In Situ,D05.1,Malignant
+3,Invasive Lobular Carcinoma,C50.9,Malignant
+4,Invasive Lobular Carcinoma,C50.9,Malignant
+5,Ductal Carcinoma In Situ,D05.1,Malignant
+6,Fibroadenoma,D24,Benign
+7,Ductal Carcinoma In Situ,D05.1,Malignant
+8,Fibroadenoma,D24,Benign
+9,Ductal Carcinoma In Situ,D05.1,Malignant
+10,Fibroadenoma,D24,Benign
+11,Invasive Ductal Carcinoma,C50.9,Malignant
+12,Ductal Carcinoma In Situ,D05.1,Malignant
+13,Invasive Ductal Carcinoma,C50.9,Malignant
+14,Ductal Carcinoma In Situ,D05.1,Malignant
+15,Ductal Carcinoma In Situ,D05.1,Malignant
+16,Invasive Ductal Carcinoma,C50.9,Malignant
+17,Invasive Ductal Carcinoma,C50.9,Malignant
+18,Invasive Ductal Carcinoma,C50.9,Malignant
+19,Invasive Ductal Carcinoma,C50.9,Malignant
+20,Fibroadenoma,D24,Benign
+21,Colon Adenocarcinoma,C18.2,Malignant
+22,Mucinous Adenocarcinoma,C18.9,Malignant
+23,Inflammatory Bowel Disease,K51.9,Inflammatory
+24,Colon Adenocarcinoma,C18.2,Malignant
+25,Mucinous Adenocarcinoma,C18.9,Malignant
+26,Tubular Adenoma,D12.6,Benign
+27,Tubular Adenoma,D12.6,Benign
+28,Mucinous Adenocarcinoma,C18.9,Malignant
+29,Mucinous Adenocarcinoma,C18.9,Malignant
+30,Colon Adenocarcinoma,C18.2,Malignant
+31,Mucinous Adenocarcinoma,C18.9,Malignant
+32,Inflammatory Bowel Disease,K51.9,Inflammatory
+33,Colon Adenocarcinoma,C18.2,Malignant
+34,Mucinous Adenocarcinoma,C18.9,Malignant
+35,Mucinous Adenocarcinoma,C18.9,Malignant
+36,Mucinous Adenocarcinoma,C18.9,Malignant
+37,Inflammatory Bowel Disease,K51.9,Inflammatory
+38,Mucinous Adenocarcinoma,C18.9,Malignant
+39,Colon Adenocarcinoma,C18.2,Malignant
+40,Tubular Adenoma,D12.6,Benign
+41,Reactive Lymphadenopathy,L04.9,Reactive
+42,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+43,Reactive Lymphadenopathy,L04.9,Reactive
+44,Reactive Lymphadenopathy,L04.9,Reactive
+45,Follicular Lymphoma,C82.9,Malignant
+46,Reactive Lymphadenopathy,L04.9,Reactive
+47,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+48,Hodgkin Lymphoma,C81.9,Malignant
+49,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+50,Hodgkin Lymphoma,C81.9,Malignant
+51,Hodgkin Lymphoma,C81.9,Malignant
+52,Hodgkin Lymphoma,C81.9,Malignant
+53,Reactive Lymphadenopathy,L04.9,Reactive
+54,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+55,Hodgkin Lymphoma,C81.9,Malignant
+56,Hodgkin Lymphoma,C81.9,Malignant
+57,Follicular Lymphoma,C82.9,Malignant
+58,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+59,Diffuse Large B-Cell Lymphoma,C83.3,Malignant
+60,Diffuse Large B-Cell Lymphoma,C83.3,Malignant

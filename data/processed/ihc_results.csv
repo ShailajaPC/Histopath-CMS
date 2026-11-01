@@ -1,0 +1,301 @@
+ihc_id,report_id,marker_name,result,intensity
+1,1,ER,Positive,1+
+2,1,PR,Positive,3+
+3,1,HER2,Negative,1+
+4,1,Ki-67,High (>15%),1+
+5,1,CK5/6,Negative,3+
+6,2,ER,Positive,1+
+7,2,PR,Positive,1+
+8,2,HER2,Positive,3+
+9,2,Ki-67,Low (<15%),1+
+10,2,CK5/6,Negative,1+
+11,3,ER,Positive,2+
+12,3,PR,Positive,2+
+13,3,HER2,Indeterminate,2+
+14,3,Ki-67,High (>15%),3+
+15,3,CK5/6,Positive,3+
+16,4,ER,Positive,1+
+17,4,PR,Positive,2+
+18,4,HER2,Positive,3+
+19,4,Ki-67,High (>15%),2+
+20,4,CK5/6,Positive,1+
+21,5,ER,Positive,3+
+22,5,PR,Positive,3+
+23,5,HER2,Equivocal,1+
+24,5,Ki-67,High (>15%),1+
+25,5,CK5/6,Positive,3+
+26,6,ER,Positive,1+
+27,6,PR,Positive,2+
+28,6,HER2,Negative,2+
+29,6,Ki-67,Low (<15%),3+
+30,6,CK5/6,Positive,2+
+31,7,ER,Positive,2+
+32,7,PR,Positive,3+
+33,7,HER2,Equivocal,2+
+34,7,Ki-67,High (>15%),2+
+35,7,CK5/6,Positive,3+
+36,8,ER,Positive,3+
+37,8,PR,Negative,3+
+38,8,HER2,Equivocal,1+
+39,8,Ki-67,Low (<15%),1+
+40,8,CK5/6,Negative,1+
+41,9,ER,Positive,2+
+42,9,PR,Negative,1+
+43,9,HER2,Negative,1+
+44,9,Ki-67,High (>15%),1+
+45,9,CK5/6,Negative,3+
+46,10,ER,Positive,3+
+47,10,PR,Positive,2+
+48,10,HER2,Negative,2+
+49,10,Ki-67,High (>15%),1+
+50,10,CK5/6,Positive,1+
+51,11,ER,Positive,3+
+52,11,PR,Positive,1+
+53,11,HER2,Negative,3+
+54,11,Ki-67,Low (<15%),3+
+55,11,CK5/6,Positive,3+
+56,12,ER,Positive,2+
+57,12,PR,Positive,1+
+58,12,HER2,Negative,2+
+59,12,Ki-67,Low (<15%),1+
+60,12,CK5/6,Positive,3+
+61,13,ER,Positive,3+
+62,13,PR,Positive,2+
+63,13,HER2,Negative,2+
+64,13,Ki-67,Low (<15%),2+
+65,13,CK5/6,Negative,3+
+66,14,ER,Negative,3+
+67,14,PR,Positive,3+
+68,14,HER2,Equivocal,1+
+69,14,Ki-67,High (>15%),3+
+70,14,CK5/6,Positive,2+
+71,15,ER,Positive,3+
+72,15,PR,Positive,3+
+73,15,HER2,Negative,2+
+74,15,Ki-67,Low (<15%),2+
+75,15,CK5/6,Negative,1+
+76,16,ER,Positive,2+
+77,16,PR,Positive,3+
+78,16,HER2,Equivocal,1+
+79,16,Ki-67,Low (<15%),1+
+80,16,CK5/6,Positive,2+
+81,17,ER,Negative,3+
+82,17,PR,Negative,2+
+83,17,HER2,Negative,1+
+84,17,Ki-67,Low (<15%),3+
+85,17,CK5/6,Negative,2+
+86,18,ER,Positive,3+
+87,18,PR,Negative,2+
+88,18,HER2,Positive,1+
+89,18,Ki-67,Low (<15%),1+
+90,18,CK5/6,Negative,3+
+91,19,ER,Positive,1+
+92,19,PR,Positive,3+
+93,19,HER2,Positive,3+
+94,19,Ki-67,High (>15%),1+
+95,19,CK5/6,Positive,2+
+96,20,ER,Negative,1+
+97,20,PR,Negative,2+
+98,20,HER2,Equivocal,1+
+99,20,Ki-67,High (>15%),3+
+100,20,CK5/6,Positive,2+
+101,21,CDX2,Negative,2+
+102,21,CK20,Positive,2+
+103,21,MLH1,Intact,3+
+104,21,MSH2,Lost,3+
+105,21,CK7,Negative,2+
+106,22,CDX2,Positive,2+
+107,22,CK20,Positive,2+
+108,22,MLH1,Intact,1+
+109,22,MSH2,Intact,2+
+110,22,CK7,Positive,1+
+111,23,CDX2,Positive,1+
+112,23,CK20,Positive,1+
+113,23,MLH1,Lost,3+
+114,23,MSH2,Intact,3+
+115,23,CK7,Negative,2+
+116,24,CDX2,Negative,1+
+117,24,CK20,Positive,1+
+118,24,MLH1,Intact,3+
+119,24,MSH2,Intact,1+
+120,24,CK7,Positive,2+
+121,25,CDX2,Positive,1+
+122,25,CK20,Negative,3+
+123,25,MLH1,Intact,2+
+124,25,MSH2,Lost,1+
+125,25,CK7,Positive,2+
+126,26,CDX2,Positive,1+
+127,26,CK20,Negative,1+
+128,26,MLH1,Intact,2+
+129,26,MSH2,Intact,2+
+130,26,CK7,Negative,3+
+131,27,CDX2,Positive,1+
+132,27,CK20,Negative,3+
+133,27,MLH1,Intact,2+
+134,27,MSH2,Lost,3+
+135,27,CK7,Positive,3+
+136,28,CDX2,Positive,3+
+137,28,CK20,Negative,2+
+138,28,MLH1,Intact,1+
+139,28,MSH2,Lost,2+
+140,28,CK7,Negative,2+
+141,29,CDX2,Positive,3+
+142,29,CK20,Positive,3+
+143,29,MLH1,Intact,3+
+144,29,MSH2,Intact,3+
+145,29,CK7,Negative,3+
+146,30,CDX2,Negative,2+
+147,30,CK20,Negative,3+
+148,30,MLH1,Intact,1+
+149,30,MSH2,Intact,3+
+150,30,CK7,Negative,1+
+151,31,CDX2,Negative,3+
+152,31,CK20,Positive,3+
+153,31,MLH1,Intact,3+
+154,31,MSH2,Lost,3+
+155,31,CK7,Negative,3+
+156,32,CDX2,Positive,3+
+157,32,CK20,Positive,2+
+158,32,MLH1,Intact,2+
+159,32,MSH2,Lost,1+
+160,32,CK7,Negative,1+
+161,33,CDX2,Positive,3+
+162,33,CK20,Negative,2+
+163,33,MLH1,Lost,3+
+164,33,MSH2,Lost,3+
+165,33,CK7,Negative,1+
+166,34,CDX2,Negative,1+
+167,34,CK20,Positive,3+
+168,34,MLH1,Intact,1+
+169,34,MSH2,Intact,1+
+170,34,CK7,Negative,1+
+171,35,CDX2,Positive,1+
+172,35,CK20,Positive,3+
+173,35,MLH1,Lost,3+
+174,35,MSH2,Lost,3+
+175,35,CK7,Positive,3+
+176,36,CDX2,Negative,1+
+177,36,CK20,Positive,3+
+178,36,MLH1,Intact,3+
+179,36,MSH2,Lost,3+
+180,36,CK7,Negative,2+
+181,37,CDX2,Negative,3+
+182,37,CK20,Positive,3+
+183,37,MLH1,Intact,2+
+184,37,MSH2,Lost,2+
+185,37,CK7,Positive,3+
+186,38,CDX2,Positive,3+
+187,38,CK20,Positive,3+
+188,38,MLH1,Lost,1+
+189,38,MSH2,Lost,3+
+190,38,CK7,Positive,2+
+191,39,CDX2,Positive,3+
+192,39,CK20,Negative,2+
+193,39,MLH1,Lost,1+
+194,39,MSH2,Lost,1+
+195,39,CK7,Positive,2+
+196,40,CDX2,Negative,3+
+197,40,CK20,Negative,1+
+198,40,MLH1,Intact,1+
+199,40,MSH2,Lost,2+
+200,40,CK7,Positive,2+
+201,41,CD20,Positive,2+
+202,41,CD3,Negative,2+
+203,41,CD10,Negative,3+
+204,41,BCL2,Positive,3+
+205,41,Ki-67,Low (<30%),2+
+206,42,CD20,Negative,2+
+207,42,CD3,Positive,1+
+208,42,CD10,Positive,2+
+209,42,BCL2,Positive,2+
+210,42,Ki-67,High (>30%),1+
+211,43,CD20,Positive,2+
+212,43,CD3,Negative,2+
+213,43,CD10,Negative,3+
+214,43,BCL2,Negative,1+
+215,43,Ki-67,High (>30%),1+
+216,44,CD20,Negative,2+
+217,44,CD3,Negative,3+
+218,44,CD10,Positive,1+
+219,44,BCL2,Negative,3+
+220,44,Ki-67,Low (<30%),1+
+221,45,CD20,Positive,1+
+222,45,CD3,Negative,1+
+223,45,CD10,Negative,2+
+224,45,BCL2,Positive,2+
+225,45,Ki-67,High (>30%),2+
+226,46,CD20,Positive,2+
+227,46,CD3,Positive,3+
+228,46,CD10,Positive,1+
+229,46,BCL2,Positive,3+
+230,46,Ki-67,Low (<30%),2+
+231,47,CD20,Negative,1+
+232,47,CD3,Positive,1+
+233,47,CD10,Positive,2+
+234,47,BCL2,Negative,3+
+235,47,Ki-67,High (>30%),1+
+236,48,CD20,Negative,3+
+237,48,CD3,Positive,2+
+238,48,CD10,Negative,1+
+239,48,BCL2,Negative,3+
+240,48,Ki-67,Low (<30%),1+
+241,49,CD20,Positive,1+
+242,49,CD3,Positive,2+
+243,49,CD10,Positive,3+
+244,49,BCL2,Positive,2+
+245,49,Ki-67,High (>30%),2+
+246,50,CD20,Positive,2+
+247,50,CD3,Positive,2+
+248,50,CD10,Positive,1+
+249,50,BCL2,Negative,3+
+250,50,Ki-67,High (>30%),3+
+251,51,CD20,Negative,3+
+252,51,CD3,Negative,3+
+253,51,CD10,Negative,3+
+254,51,BCL2,Negative,2+
+255,51,Ki-67,High (>30%),3+
+256,52,CD20,Negative,2+
+257,52,CD3,Positive,2+
+258,52,CD10,Negative,2+
+259,52,BCL2,Negative,2+
+260,52,Ki-67,High (>30%),2+
+261,53,CD20,Positive,1+
+262,53,CD3,Positive,1+
+263,53,CD10,Positive,3+
+264,53,BCL2,Positive,2+
+265,53,Ki-67,High (>30%),3+
+266,54,CD20,Negative,2+
+267,54,CD3,Negative,2+
+268,54,CD10,Positive,2+
+269,54,BCL2,Positive,2+
+270,54,Ki-67,High (>30%),1+
+271,55,CD20,Negative,1+
+272,55,CD3,Positive,3+
+273,55,CD10,Positive,3+
+274,55,BCL2,Positive,2+
+275,55,Ki-67,Low (<30%),1+
+276,56,CD20,Negative,2+
+277,56,CD3,Positive,1+
+278,56,CD10,Negative,2+
+279,56,BCL2,Negative,3+
+280,56,Ki-67,Low (<30%),1+
+281,57,CD20,Negative,2+
+282,57,CD3,Negative,2+
+283,57,CD10,Negative,1+
+284,57,BCL2,Negative,1+
+285,57,Ki-67,Low (<30%),3+
+286,58,CD20,Positive,1+
+287,58,CD3,Negative,2+
+288,58,CD10,Positive,1+
+289,58,BCL2,Positive,3+
+290,58,Ki-67,Low (<30%),2+
+291,59,CD20,Negative,2+
+292,59,CD3,Negative,3+
+293,59,CD10,Negative,1+
+294,59,BCL2,Negative,2+
+295,59,Ki-67,Low (<30%),3+
+296,60,CD20,Negative,1+
+297,60,CD3,Positive,3+
+298,60,CD10,Positive,1+
+299,60,BCL2,Positive,2+
+300,60,Ki-67,Low (<30%),2+
