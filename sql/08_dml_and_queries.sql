@@ -1,7 +1,4 @@
--- ============================================================
--- 08_dml_and_queries.sql   -   DEMONSTRATION SCRIPT (run in pgAdmin, block by block)
--- Rubric items 6 & 7: DML operations, nested / correlated / recursive queries, joins
--- ============================================================
+
 
 -- ═══════════ A. DML  (INSERT / UPDATE / DELETE / SELECT) ═════
 -- All inside a transaction that is rolled back, so your data is untouched.
@@ -112,7 +109,8 @@ FROM Reports WHERE (synoptic_data->>'tumor_size_cm')::NUMERIC > 5;
 -- Full-text search
 SELECT diagnosis FROM Reports WHERE search_vector @@ to_tsquery('english','carcinoma & ductal') LIMIT 5;
 
--- ═══════════ I. Trigger / RBAC proofs ════════════════════════
+
 -- UPDATE Reports SET diagnosis='x' WHERE is_signed;   -- fails: "Cannot modify a signed report"
--- SET ROLE histo_technician; INSERT INTO Reports(...);  -- fails: permission denied
--- RESET ROLE;
+--SET ROLE histo_technician; INSERT INTO Reports(case_id, pathologist_id, diagnosis)  -- fails: permission denied
+--VALUES (gen_random_uuid(), gen_random_uuid(), 'x');
+ -- RESET ROLE;

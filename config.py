@@ -3,6 +3,6 @@ DB_CONFIG = {
     "host":     "localhost",
     "port":     5432,
     "user":     "postgres",
-    "password": "Histodb",   # ← your PostgreSQL password
+    "password": "",   # ← your PostgreSQL password
     "dbname":   "histopath_db"
 }
