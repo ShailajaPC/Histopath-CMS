@@ -68,14 +68,14 @@ sql/            01_schema (DDL) 02_fulltext 03_differential 04_analytics 05_func
                 06_rbac_vector (roles+grants) 07_seed_users 08_dml_and_queries (demo script)
 scripts/        setup_db.py  load_data.py  embed_server.py
 histopath-next/ pages/ (UI)  pages/api/ (backend)  lib/ (db, auth, embed)  components/
-docs/           ER_diagram.png  PROJECT_DOCUMENTATION.md  VIVA_QA.md
+docs/           ER_diagram.png  PROJECT_DOCUMENTATION.md  
 app/            first Flask prototype (kept for history – the Next.js app is the final system)
 ```
 
 ## 5. Documentation
 * ER diagram → `docs/ER_diagram.png`
 * Relational schema, technology justification, rubric mapping → `docs/PROJECT_DOCUMENTATION.md`
-* Viva questions & answers → `docs/VIVA_QA.md`
+`
 
 ## 6. Push to GitHub
 ```bash
