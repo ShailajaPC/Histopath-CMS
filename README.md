@@ -1,4 +1,4 @@
-# 🔬 HistoPath CMS — Histopathology Case & Report Management System
+# 🔬 HistoPath CMS — Histopathology Case & Report Management System.
 
 Experiential Learning Level 3 – Mini Project  
 **Stack:** PostgreSQL 14+ (relational + **pgvector** vector DB + JSONB) · Next.js (React) · Node API routes · Python sentence-transformers (embedding service)
